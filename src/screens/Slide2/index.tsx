@@ -4,6 +4,7 @@ import { ScrollView, View, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { styles } from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { AntDesign, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 export function Imagens() {
     const [image, setImage] = useState<string | null>(null);
@@ -22,7 +23,9 @@ export function Imagens() {
     return (
         <View style={styles.container}>
             {image && <Image style={styles.image} source={{uri: image}}/>}
-            <TouchableOpacity onPress={pickImage}>FontAwesome</TouchableOpacity>
+            <TouchableOpacity onPress={pickImage}>
+                <MaterialCommunityIcons name="image" size={70}/>
+            </TouchableOpacity>
         </View>
     );
 }

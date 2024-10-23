@@ -4,14 +4,15 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
     },
     message: {
         textAlign: 'center',
         paddingBottom: 10,
     },
     camera: {
-        width: 200,
-        height: 200,
+        width: 400,
+        height: 400,
         margin: 20,
     },
     headerCamera: {
