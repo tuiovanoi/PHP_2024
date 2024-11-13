@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "tuliovr",
+    "newArchEnabled": true,
     "slug": "tuliovr",
     "version": "1.0.0",
     "orientation": "portrait",
