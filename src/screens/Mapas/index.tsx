@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { colors } from "../../styles/colors";
 import { View } from "react-native";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { MenuDrawerTypes } from "../../navigation/MenuDrawer.natigation";
+import { TabTypes } from "../../navigation/MenuDrawer.natigation";
 import { StyleSheet } from "react-native";
-export function Mapa({ navigation, route }: MenuDrawerTypes) {
+export function Mapa({ navigation, route }: TabTypes) {
   const [origin, setOrigin] = useState<Region | null>(null);
   const { cordenadas } = route.params || {};
   const origem = cordenadas?.origem || { latitude: 0, longitude: 0 };

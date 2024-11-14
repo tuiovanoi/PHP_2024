@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Text, TextInput, View, Button, TouchableOpacity } from "react-native";
-import { coords as Coords, MenuDrawerTypes } from "../../navigation/MenuDrawer.natigation";
+import { coords as Coords, TabTypes } from "../../navigation/MenuDrawer.natigation";
 import { styles } from "./styles";
-export function Entrada({ navigation }: MenuDrawerTypes) {
+export function Entrada({ navigation }: TabTypes) {
   const [coords, setCoords] = useState<Coords>({
     origem: { latitude: 0, longitude: 0 },
     destino: { latitude: 0, longitude: 0 },
@@ -10,7 +10,7 @@ export function Entrada({ navigation }: MenuDrawerTypes) {
   function handleChange(key: "origem" | "destino", field: "latitude" | "longitude", value: string) {
     const parsedValue = parseFloat(value);
 
-    setCoords((prevState) => ({
+    setCoords((prevState: { [x: string]: any; }) => ({
       ...prevState,
       [key]: {
         ...prevState[key],

@@ -1,45 +1,43 @@
 import React from 'react';
-import { createDrawerNavigator, DrawerNavigationProp } from '@react-navigation/drawer';
-import { colors } from "../styles/colors";
-import { FontAwesome, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { Entrada } from "../screens/Entrada";
-import { Mapa } from "../screens/Mapa";
-
-type MenuDrawerParam = {
-    Entrada: undefined;
-    Mapas: undefined;
+import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { Entrada } from '../screens/Entrada';
+import { Mapa } from '../screens/Mapas';
+import { colors } from '../styles/colors';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
+type TabParamList = {
+    Entrada: undefined
+    Mapas: Coords
 }
-export interface coords {
-    origem: {
-        latitude: number,
-        longitude: number,
-    },
-    destino:
-    {
-        latitude: number,
-        longitude: number,
-    }
+type TabScreenNavigationProp = BottomTabNavigationProp<TabParamList, 'Entrada'>
+export type TabTypes = {
+    navigation: TabScreenNavigationProp
 }
-
-type MenuScreenNavigation = DrawerNavigationProp<MenuDrawerParam, "Entrada">
-
-export type MenuDrawerTypes = {
-    navigation: MenuScreenNavigation;
-    route: any;
-}
-
-export function DrawerNavigation () {
-    const Drawer = createDrawerNavigator<MenuDrawerParam>();
+export function TabNavigation() {
+    const Tab = createBottomTabNavigator<TabParamList>()
     return (
-        <Drawer.Navigator screenOptions={{
-            drawerStyle: {
-              backgroundColor: 'white',
-              width: 250,
-            },
-          }}
-        >
-            <Drawer.Screen name='Entrada' component={Entrada}/>
-            <Drawer.Screen name='Mapas' component={Mapa}/>
-        </Drawer.Navigator>
+        <Tab.Navigator
+        screenOptions={{
+            tabBarActiveBackgroundColor: colors.secondary,
+            tabBarActiveTintColor: colors.white,
+            headerShown: false,
+            tabBarInactiveBackgroundColor: colors.secondary,
+            tabBarInactiveTintColor: colors.white,
+        }}
+    >
+        <Tab.Screen name='Entrada' component={Entrada}
+        options={{
+            tabBarIcon: () => (
+                <Ionicons name="person" size={24} color={colors.white} />
+            ),
+        }}
+    />
+    <Tab.Screen name='Mapas' component={Mapa}
+    options={{
+        tabBarIcon: () => (
+            <AntDesign name="message1" size={24} color={colors.white} />
+        ),
+        }}
+    />
+    </Tab.Navigator>
     )
 }
